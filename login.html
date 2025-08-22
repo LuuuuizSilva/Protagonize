@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entrar com Login</title>
+</head>
+<body>
+    <form method="POST">
+        <h1>Entrar com Login</h1>
+
+        <label>CNPJ:</label><br>
+        <input type="text" name="login_acesso" required><br><br>
+
+        <label>Senha:</label><br>
+        <input type="password" name="senha_acesso" required><br><br>
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    {% if erro %}
+    
+    <p>{{ erro }}</p>
+    
+    {% endif %}
+
+    {% if estudantes %}
+        <h2>Lista de Voluntarios disponiveis </h2>
+        <ul>
+            {% for est in estudantes %}
+                <li>{{ est.nome }} - {{ est.endereco }} - {{ est.idade }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><a href="{{ url_for('index') }}">Voltar</a></p>
+</body>
+</html>
